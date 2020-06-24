@@ -113,9 +113,39 @@ All the assumptions about the problem domain are made explicit in the form of a 
 The model performs well on the training data but it **does not generalize**. 
 Overfitting happens when the model is too complex relative to the amount and noisiness of the training data.
 
+Corresponds to a situation of **high variance**. Variance is how much the prediction function would change if we estimated it using a different training set. If the variance is high, it means that small changes in the training set lead to large changes in our prediction function. Usually, more flexible methods have higher variance.
+
 ### Underfitting
 
-The model is **too simple** to learn the underlying structure of the data
+The model is **too simple** to learn the underlying structure of the data.
+
+Corresponds to a situation of **high bias**. Bias is the error introduced by approximating a real life problem by a simple model. Ex: linear regression assumes a linear relationship.
+
+### The bias/variance tradeoff
+A model’s generalization error can be expressed as the sum of three errors: bias, variance and irreductible error.
+
+- Increasing a model’s complexity will typically increase its variance and reduce its bias.
+
+- Reducing a model’s complexity increases its bias and reduces its variance. 
+
+#### Bias
+- Due to wrong assumptions, such as assuming that the data is linear when it is actually quadratic.
+
+- A high-bias model is most likely to **underfit** the training data.
+
+- $J_{train}(\Theta)$ will be high (since the fit is not good) and $J_{cv}(\Theta) \approx $J_{train}(\Theta)$
+
+#### Variance
+- Due to the model’s excessive sensitivity to small variations in the training data.
+
+- A model with many degrees of freedom is likely to have high variance, and thus to **overfit** the training data
+
+- $J_{train}(\Theta)$ will be low (since the fit is good on the training data) and $J_{cv}(\Theta) >> $J_{train}(\Theta)$ (due to the overfit)
+
+#### Irreductible error
+- Due to the noisiness of the data itself.
+
+- The only way to reduce this part of the error is to **clean up the data**.
 
 # Validating and Testing
 
@@ -139,3 +169,34 @@ The general procedure is as follows:
 - Fit a model on the training set and evaluate it on the test set
 - Retain the evaluation score and discard the model
 4. Summarize the skill of the model using the sample of model evaluation scores
+
+## Testing and Error Metrics
+
+### Accuracy
+Out of all the data, how many points did we classify correctly?
+
+### Precision
+Out of all the points we’ve **predicted to be positive**, how many are **correct**?
+
+Ex: for a Spam Detector, we need a high precision
+- False positives NOT ok (ex: sending an email that was not spam to the spam folder)
+
+- False negatives ok (ex: sending a spam to the inbox folder)
+
+### Recall
+Out of all the points **labelled positive**, how many did we **correctly predict**?
+
+Ex: for a Medical Model (predicting if a patient is sick or not), we need a high recall
+- False positives ok (ex: patient diagnosed sick, but is healthy)
+
+- False negatives NOT ok (ex: patient diagnosed healthy, but is sick)
+
+### F1 Score
+**Harmonic mean** of precision and recall.
+
+OBS: $h_mean(x,y) = \frac{2xy}{x+y}$
+
+### F$\Beta$ Score
+We choose beta according to what we want to prioritize (precision or recall). 
+
+$F\Beta = (1+\Beta)^2\frac{precision\*recall}{\Beta^2\*precision+recall}$
