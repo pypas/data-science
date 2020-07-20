@@ -94,6 +94,8 @@ Learns the examples by heart and compares new problem instances with instances s
 All the assumptions about the problem domain are made explicit in the form of a model.
 
 
+*OBS: an epoch is one **stream** of our entire dataset. The number of epochs we define is the amount of times our model will see the entire dataset* 
+
 #  Chalenges in ML
 
 ## Bad data
@@ -200,3 +202,11 @@ OBS: $h_mean(x,y) = \frac{2xy}{x+y}$
 We choose beta according to what we want to prioritize (precision or recall). 
 
 $F\Beta = (1+\Beta)^2\frac{precision\*recall}{\Beta^2\*precision+recall}$
+
+## AI x Machine Learning 
+
+Artificial Intelligence: The effort to automate intellectual tasks normally performed by humans. Machine Learning is a part of AI.
+
+Machine Learning: figure out the rules for AI. 
+
+Neural Networks: form of Machine Learning that uses a layered representation of data. Neural networks are not modeled after the way the human brain works.
